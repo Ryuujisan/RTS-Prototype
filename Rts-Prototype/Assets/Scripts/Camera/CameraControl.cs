@@ -17,6 +17,9 @@ public class CameraControl : MonoBehaviour
 
 	[Range(0, 0.2f)]
 	public float cursorTreshold;
+
+	[SerializeField]
+	private LayerMask commandLayerMask = 1;
 	
 	private RectTransform selectionBox;
 	private new Camera camera;
@@ -32,6 +35,9 @@ public class CameraControl : MonoBehaviour
 	private Rect boxRect;
 
 	private List<Unit> selectedUnits = new List<Unit>();
+	
+	private Ray ray;
+	private RaycastHit raycastHit;
 	
 	private void Awake()
 	{
@@ -99,6 +105,7 @@ public class CameraControl : MonoBehaviour
 		{
 			selectionBox.gameObject.SetActive(true);
 			seletionRect.position = mousePos;
+			
 		}
 		else if(Input.GetMouseButtonUp(0))
 		{
@@ -114,6 +121,11 @@ public class CameraControl : MonoBehaviour
 			selectionBox.sizeDelta = boxRect.size;
 			UpdateSelecting();
 		}
+
+		if(Input.GetMouseButtonDown(1))
+		{
+			GiveCommands();
+		}
 	}
 	
 	private void UpdateSelecting()
@@ -123,7 +135,7 @@ public class CameraControl : MonoBehaviour
 		foreach(Unit unit
 			in Unit.selectablesUnit)
 		{
-			if(unit == null) continue;
+			if(!unit || !unit.IsAlive) continue;
 			var pos       = unit.transform.position;
 			var posScrean = camera.WorldToScreenPoint(pos);
 
@@ -158,5 +170,36 @@ public class CameraControl : MonoBehaviour
 		}
 
 		return rect;
+	}
+
+
+	private void GiveCommands()
+	{
+		ray = camera.ViewportPointToRay(mousePosScreen);
+		if(Physics.Raycast(ray, out raycastHit, 1000, commandLayerMask))
+		{
+
+			object commanData = null;
+			if(raycastHit.collider is TerrainCollider)
+			{
+				//Debug.Log("Terrain: " + raycastHit.point.ToString());
+				commanData = raycastHit.point;
+			}
+			else
+			{
+				//Debug.Log(raycastHit.collider);
+				commanData = raycastHit.collider.GetComponent<Unit>();
+			}
+			GiveCommands(commanData);
+		}
+	}
+
+	private void GiveCommands(object dataCommand)
+	{
+		foreach(var unit in selectedUnits)
+		{
+			if(unit.IsAlive)
+				unit.SendMessage("Command", dataCommand, SendMessageOptions.DontRequireReceiver);
+		}
 	}
 }
