@@ -80,11 +80,15 @@ public class Zombie : Unit
     {
         base.Idling();
         UpdateSight();
-        if((idleTimer -= Time.deltaTime) <= 0)
+        
+        if(target != null)
         {
-            idleTimer = idleColdown;
-            task = Task.move;
-            SetRandomPosition();
+            if((idleTimer -= Time.deltaTime) <= 0)
+            {
+                idleTimer = idleColdown;
+                task      = Task.move;
+                SetRandomPosition();
+            }
         }
     }
 
@@ -101,6 +105,7 @@ public class Zombie : Unit
         {
             target = soldier.transform;
             task = Task.chase;
+            nav.SetDestination(target.position);
         }
     }
 
@@ -114,9 +119,14 @@ public class Zombie : Unit
         nav.SetDestination(startPoint + delta);
     }
 
-    public override void ReciveDamage(float damage)
+    public override void ReciveDamage(float damage, Vector3 delerPosistion)
     {
-        base.ReciveDamage(damage);
+        base.ReciveDamage(damage, delerPosistion);
+        if(!target)
+        {
+            task = Task.move;
+            nav.SetDestination(delerPosistion);
+        }
         if(HealthPercent > .5)
         {
             //animator.SetTrigger("");
@@ -127,7 +137,8 @@ public class Zombie : Unit
     {
         base.OnDrawGizmosSelected();
         Gizmos.color = Color.blue;
-        startPoint = transform.position;
+        if(!Application.isPlaying)
+            startPoint = transform.position;
         Gizmos.DrawWireSphere(startPoint, patrolRadios);
     }
 }

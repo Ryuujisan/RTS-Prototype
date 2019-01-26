@@ -105,6 +105,7 @@ public class CameraControl : MonoBehaviour
 		{
 			selectionBox.gameObject.SetActive(true);
 			seletionRect.position = mousePos;
+			
 		}
 		else if(Input.GetMouseButtonUp(0))
 		{
@@ -134,7 +135,7 @@ public class CameraControl : MonoBehaviour
 		foreach(Unit unit
 			in Unit.selectablesUnit)
 		{
-			if(unit == null) continue;
+			if(!unit || !unit.IsAlive) continue;
 			var pos       = unit.transform.position;
 			var posScrean = camera.WorldToScreenPoint(pos);
 
@@ -197,7 +198,8 @@ public class CameraControl : MonoBehaviour
 	{
 		foreach(var unit in selectedUnits)
 		{
-			unit.SendMessage("Command", dataCommand, SendMessageOptions.DontRequireReceiver);
+			if(unit.IsAlive)
+				unit.SendMessage("Command", dataCommand, SendMessageOptions.DontRequireReceiver);
 		}
 	}
 }

@@ -1255,7 +1255,7 @@ MonoBehaviour:
   hpBarPrefab: {fileID: 1443715836632466, guid: 70100a74b7767014c8e6dfa2b455dc74,
     type: 2}
   stopingDistance: 1
-  attackDistance: 0.88
+  attackDistance: 1
   attackColdown: 1
   attackDamage: 50
   cheasingSpeed: 3.5

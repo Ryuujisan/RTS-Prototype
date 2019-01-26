@@ -122,7 +122,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4846736819855508, guid: 0584839bceadb844fa31b1ca352056ba, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 298.51
+      value: 301.65
       objectReference: {fileID: 0}
     - target: {fileID: 4846736819855508, guid: 0584839bceadb844fa31b1ca352056ba, type: 2}
       propertyPath: m_LocalPosition.y
@@ -130,7 +130,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4846736819855508, guid: 0584839bceadb844fa31b1ca352056ba, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 156.7
+      value: 178.33
       objectReference: {fileID: 0}
     - target: {fileID: 4846736819855508, guid: 0584839bceadb844fa31b1ca352056ba, type: 2}
       propertyPath: m_LocalRotation.x
@@ -151,6 +151,11 @@ Prefab:
     - target: {fileID: 4846736819855508, guid: 0584839bceadb844fa31b1ca352056ba, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114762881566315138, guid: 0584839bceadb844fa31b1ca352056ba,
+        type: 2}
+      propertyPath: attackDistance
+      value: 1.49
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0584839bceadb844fa31b1ca352056ba, type: 2}
@@ -430,6 +435,10 @@ Prefab:
       propertyPath: m_Name
       value: Zombie (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4209205178343066, guid: 0584839bceadb844fa31b1ca352056ba, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.0032806396
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0584839bceadb844fa31b1ca352056ba, type: 2}
   m_IsPrefabAsset: 0
@@ -527,8 +536,8 @@ MonoBehaviour:
   zoomSpeed: 1
   graundHight: 50
   cameraHeightMinMax: {x: 7.7, y: 22.64}
-  cameraRotationMinMax: {x: 56.5, y: 43}
-  zoomLerp: 0.1472829
+  cameraRotationMinMax: {x: 33.7, y: 54.6}
+  zoomLerp: 1
   cursorTreshold: 0.047
   commandLayerMask:
     serializedVersion: 2

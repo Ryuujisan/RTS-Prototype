@@ -149,6 +149,7 @@ public class Unit : MonoBehaviour
 	{
 		if(target != null)
 		{
+			nav.SetDestination(target.position);
 			float distance = Vector3.Magnitude(target.position - transform.position);
 			if(distance <= attackDistance)
 			{
@@ -200,8 +201,11 @@ public class Unit : MonoBehaviour
 
 	public virtual void Attack()
 	{
-		animator.SetTrigger(ANIMATOR_Attack);
-		attackTimer = attackColdown;
+		if(target.GetComponent<Unit>().IsAlive)
+		{
+			animator.SetTrigger(ANIMATOR_Attack);
+			attackTimer = attackColdown;
+		}
 	}
 
 	public virtual void DealDamage()
@@ -211,7 +215,9 @@ public class Unit : MonoBehaviour
 			Unit unit = target.GetComponent<Unit>();
 			if(unit && unit.IsAlive)
 			{
-				unit.ReciveDamage(attackDamage);
+				unit.ReciveDamage(attackDamage, transform.position);
+				if(!unit.IsAlive)
+					task = Task.idle;
 			}
 			else
 			{
@@ -220,10 +226,13 @@ public class Unit : MonoBehaviour
 		}
 	}
 
-	public virtual void ReciveDamage(float damage)
+	public virtual void ReciveDamage(float damage, Vector3 delerPosistion)
 	{
+		animator.SetTrigger("Hit");
 		if(IsAlive)
 			hp -= damage;
+		
+		animator.SetBool(ANIMATOR_ALIVE , IsAlive);
 	}
 	
 	protected virtual void OnDrawGizmosSelected()
