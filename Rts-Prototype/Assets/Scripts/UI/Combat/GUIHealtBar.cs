@@ -14,13 +14,15 @@ namespace UnityEngine.UI
 		
 		private Slider slider;
 		private Unit unit;
+		private Transform parent;
 
 		private Transform cameraTransform;
 		private void Awake()
 		{
 			slider = GetComponent<Slider>();
 			unit = GetComponentInParent<Unit>();
-
+			parent = transform.parent;
+			
 			cameraTransform = Camera.main.transform;
 			
 			var canvas = GameObject.FindWithTag(HP_Canvas);
@@ -32,20 +34,24 @@ namespace UnityEngine.UI
 
 		private void Update()
 		{
-			if(!unit)
+			if(!parent)
 			{
 				Destroy(gameObject);
 				return;
 			}
 
-			slider.value = unit.HealthPercent;
-			transform.position = unit.transform.position + offset;
+			if(unit)
+			{
+				slider.value       = unit.HealthPercent;
+				transform.position = unit.transform.position + offset;
+			}
+
 			transform.LookAt(cameraTransform);
 
 			var rotation = transform.localEulerAngles;
-			rotation.y = 180;
+			rotation.y                 = 180;
 			transform.localEulerAngles = rotation;
-
+		
 		}
 	}
 }

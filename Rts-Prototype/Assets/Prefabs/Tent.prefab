@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3300000}
   - component: {fileID: 2300000}
   - component: {fileID: 6400000}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MedievalTentBig_Strings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,8 +28,7 @@ GameObject:
   - component: {fileID: 400002}
   - component: {fileID: 3300002}
   - component: {fileID: 2300002}
-  - component: {fileID: 6400002}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MedievalTentBig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,9 +43,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 400004}
-  - component: {fileID: 9500000}
-  m_Layer: 0
-  m_Name: MedievalTentBig
+  - component: {fileID: 136955302307474080}
+  m_Layer: 11
+  m_Name: Tent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,26 +57,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: -0.7012379, y: 0.09091475, z: 0.090914756, w: 0.70123786}
+  m_LocalRotation: {x: -0.5804147, y: 0.4038796, z: 0.4038796, w: 0.5804147}
   m_LocalPosition: {x: 0.000000019557774, y: -0.1644063, z: 0.00000011920929}
   m_LocalScale: {x: 5.9260483, y: 5.9260488, z: 6.210933}
   m_Children: []
   m_Father: {fileID: 400004}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90.00001, y: 54.89, z: 14.774001}
 --- !u!4 &400002
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
-  m_LocalRotation: {x: -0.7012379, y: 0.09091475, z: 0.090914756, w: 0.70123786}
+  m_LocalRotation: {x: -0.57797223, y: 0.4073673, z: 0.4073673, w: 0.57797223}
   m_LocalPosition: {x: 0, y: -0.039184093, z: 0}
   m_LocalScale: {x: 5.9260483, y: 5.9260488, z: 6.0613084}
   m_Children: []
   m_Father: {fileID: 400004}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90.00001, y: 55.58, z: 14.774001}
 --- !u!4 &400004
 Transform:
   m_ObjectHideFlags: 1
@@ -85,7 +84,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.03, z: 0}
+  m_LocalPosition: {x: 285.08118, y: 50.371735, z: 143.70412}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -193,38 +192,6 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300002, guid: 1c20290b98829a042b2bb65ca6f90c1b, type: 3}
---- !u!64 &6400002
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100002}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 1c20290b98829a042b2bb65ca6f90c1b, type: 3}
---- !u!95 &9500000
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100004}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 1c20290b98829a042b2bb65ca6f90c1b, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -236,3 +203,16 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100004}
   m_IsPrefabAsset: 1
+--- !u!136 &136955302307474080
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 6.34
+  m_Height: 1.1212502
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
